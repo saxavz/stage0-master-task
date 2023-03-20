@@ -10,15 +10,13 @@ public class Pyramid {
     }
 
     public static String printFormattedLine(int maxNum, int maxLen){
-        char[] arr = new char[maxLen*2 -1];
-        for(int i = 0; i < maxLen; i++){
-            int rightPos = arr.length/2 + i;
-            int leftPos = arr.length/2 - i;
-            char c = (i + 1 > maxNum ) ? ' ' : Character.forDigit(i + 1, 10) ;
-            arr[rightPos] = (c == ' ') ? Character.MIN_VALUE : c;
-            arr[leftPos] = c;
+        StringBuilder b = new StringBuilder();
+        for(int i = 1; i <= maxLen; i++){
+            String s = (i > maxNum ) ? " " : String.valueOf(i) ;
+            b.insert(0, (i==1) ? "" : s);
+            b.append(s.trim());
         }
-        return String.valueOf(arr).replaceAll("\0", "");
+        return b.toString();
     }
 
     public static void main(String[] args) {
